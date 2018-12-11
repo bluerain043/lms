@@ -1,0 +1,10 @@
+<?php
+    error_reporting(0);
+    // Tell PHP that we're using UTF-8 strings until the end of the script
+    mb_internal_encoding('UTF-8');
+    // Tell PHP that we'll be outputting UTF-8 to the browser
+    mb_http_output('UTF-8');
+
+    $versionNo = "beta v1.0.0";
+?>
+
