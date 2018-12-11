@@ -1,6 +1,7 @@
 <?php
     error_reporting(E_ERROR | E_WARNING | E_PARSE);
-    $currDir = dirname(__FILE__); 
+    $currDir = dirname(__FILE__);
+
     include_once("{$currDir}/config/db.php");
     include_once("{$currDir}/class/Books.php");
     include_once("{$currDir}/lib/functions.php");

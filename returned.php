@@ -73,23 +73,6 @@ $allBooks = Books::getBookByStatus(Books::BOOK_STAT_ISSUED);
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-support">  Patron </i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control name" name="name" placeholder="Author" disabled>
-                                    </div>
-
-                                    <input type="hidden" name="action" value="returned"/>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
                                         <i class="notika-icon notika-star"> Book Title</i>
                                     </div>
                                     <div class="nk-int-st">
@@ -97,6 +80,10 @@ $allBooks = Books::getBookByStatus(Books::BOOK_STAT_ISSUED);
                                     </div>
                                 </div>
                             </div>
+
+                        </div>
+
+                        <div class="row">
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
@@ -108,22 +95,6 @@ $allBooks = Books::getBookByStatus(Books::BOOK_STAT_ISSUED);
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="form-group ic-cmp-int">
-                                    <div class="form-ic-cmp">
-                                        <i class="notika-icon notika-star"> Book Type</i>
-                                    </div>
-                                    <div class="nk-int-st">
-                                        <input type="text" class="form-control type booktype" name ="book_type" placeholder="Book Type" disabled>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
@@ -142,14 +113,46 @@ $allBooks = Books::getBookByStatus(Books::BOOK_STAT_ISSUED);
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group ic-cmp-int">
                                     <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-star"> Book Type</i>
+                                    </div>
+                                    <div class="nk-int-st">
+                                        <input type="text" class="form-control type booktype" name ="book_type" placeholder="Book Type" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                <div class="form-group ic-cmp-int">
+                                    <div class="form-ic-cmp">
                                         <i class="notika-icon notika-support"> Issued By</i>
                                     </div>
                                     <div class="nk-int-st">
                                         <input type="hidden" name="cleared_by" value="<?php echo $_SESSION['userid']; ?>">
+                                        <input type="hidden" name="action" value="returnedBooks">
+                                        <input type="hidden" name="members" class="members" value="">
+                                        <input type="hidden" name="books" class="books" value="">
                                         <input type="text" class="form-control issued" name ="Publisher" placeholder="Issued By" value="<?php echo $_SESSION['name']; ?>" disabled>
                                     </div>
                                 </div>
                             </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                                <div class="form-group nk-datapk-ctm form-elet-mg ic-cmp-int" id="data_1">
+                                    <div class="form-ic-cmp">
+                                        <i class="notika-icon notika-calendar"> Issued Date</i>
+                                    </div>
+                                    <div class="input-group date nk-int-st">
+                                        <span class="input-group-addon"></span>
+                                        <input type="text" class="form-control issued_date" name="issued_date" value="mm/dd/YYYY">
+                                    </div>
+                                </div>
+
+                            </div>
+
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 
                                 <div class="form-group nk-datapk-ctm form-elet-mg ic-cmp-int" id="data_1">
@@ -158,7 +161,7 @@ $allBooks = Books::getBookByStatus(Books::BOOK_STAT_ISSUED);
                                     </div>
                                     <div class="input-group date nk-int-st">
                                         <span class="input-group-addon"></span>
-                                        <input type="text" class="form-control due_date" name="due_date" value="03/19/2018">
+                                        <input type="text" class="form-control due_date" name="due_date" value="mm/dd/YYYY">
                                     </div>
                                 </div>
 
@@ -262,15 +265,14 @@ $allBooks = Books::getBookByStatus(Books::BOOK_STAT_ISSUED);
                                         <i class="notika-icon notika-dollar fines-label"> Total Fines</i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control total_fines" placeholder="Total Fines">
+                                        <input type="text" class="form-control fine_paid" name="fine_paid" placeholder="Total Fines">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="btn-list mg-tb-30">
-                            <button class="btn btn-default btn-clear notika-btn-default waves-effect">Clear</button>
-                            <button class="btn btn-success btn-save notika-btn-success waves-effect">Save</button>
+                            <button class="btn btn-success btn-save notika-btn-success waves-effect">Returned</button>
                             <!--<button class="btn btn-danger btn-cancel notika-btn-danger waves-effect">Cancel</button>-->
                         </div>
                     </form>
@@ -295,27 +297,13 @@ require __DIR__.'/layout/footer.php';
             $isbn = $(this).val();
             if($isbn){
                 var sFormData = { 'isbn' : $isbn, 'action' : 'returned' },
-                    fnCallback = function (res){
+                    fnCallback = function (res){ console.log(res);
                         $.each(res, function(k, v) {
                             if(k == 'is_banned' && v == 0) $('.'+k).val('No');
                             else if(k == 'is_banned' && v == 1) $('.'+k).val('Yes');
                             else $('.'+k).val(v);
 
                         });
-
-                       /* if(res['status'] == 0) alert('Book is currently not available');
-                        else{
-                            $('.book_title').val(res['book_title']);
-                            $('.author_name').val(res['author_name']);
-                            $('.booktype').val(res['booktype']);
-                            $('.author_name').val(res['author_name']);
-                            $('.edition').val(res['edition']);
-                            $('.pages').val(res['pages']);
-                            $('.price').val(res['price']);
-                            $('.publisher').val(res['publisher']);
-                            $('.publisher').val(res['publisher']);
-                        }*/
-
                     };
                 common.request
                     .fnAjax('./services/ajaxGetBookDetails.php', 'GET', 'json', sFormData)

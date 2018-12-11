@@ -3,6 +3,7 @@ $currDir = dirname(__FILE__);
 include_once("../config/db.php");
 include_once("../class/Books.php");
 include_once("../class/BookIssued.php");
+include_once("../class/ReturnedBooks.php");
 include_once("../lib/functions.php");
 
 
@@ -34,9 +35,20 @@ if(isset($_GET['isbn']) && $_GET['action'] == 'returned'){
     if(!is_null($due_date = $arResponse['due_date'])){
         if(($fines = dateDifference($due_date, date('Y-m-d')))> 0){
             $arResponse['days_of_overdue'] = $fines;
-            $arResponse['total_fines'] = $fines * 0.2;
+            $arResponse['fine_paid'] = sprintf('%0.2f', ($fines * 0.2));
         }
     }
     echo json_encode($arResponse);
 }
 
+if(isset($_POST['action']) && $_POST['action'] == 'returnedBooks'){
+    $returned = new ReturnedBooks($_POST);
+    $arResponse = $returned->postReturnedBooks();
+    if($arResponse){
+        $update = BookIssued::updateStatus($_POST['books'], 0);
+        echo 'Book returned successfully';
+    }else{
+        echo 'Problem while returning book';
+    }
+
+}

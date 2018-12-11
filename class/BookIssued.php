@@ -12,7 +12,7 @@ class BookIssued extends Books{
     private $issued_by;
     private $issued_date;
     private $members;
-    private $return_date;
+
 
     /*** declare setters ***/
 
@@ -31,10 +31,6 @@ class BookIssued extends Books{
     public function setMembers($members)
     {
         $this->members = $members;
-    }
-    public function setReturnDate($return_date)
-    {
-        $this->return_date = date('Y-m-d', strtotime($return_date));
     }
 
     /** declare getters ***/
@@ -55,10 +51,7 @@ class BookIssued extends Books{
     {
         return $this->members;
     }
-    public function getReturnDate()
-    {
-        return $this->return_date;
-    }
+
 
     public static function currentlyLoanBooks($member)
     {
@@ -90,7 +83,6 @@ class BookIssued extends Books{
             if(isset($params['issued_by']) ) $this->setIssuedBy($params['issued_by']);
             if(isset($params['members']) ) $this->setMembers($params['members']);
             if(isset($arData['isbn_no']) ) $this->setIsbnNo(stripslashes( strip_tags( $arData['isbn_no'] ) ));
-            //if(isset($params['return_date']) ) $this->setReturnDate($params['return_date']);
             $this->setIssuedDate(date('Y-m-d'));
 
             /** check if member is banned from borrowing a book  **/
@@ -163,6 +155,26 @@ class BookIssued extends Books{
         }catch (PDOException $e) {
             return $e->getMessage();
         }
+    }
+
+    public static function updateStatus($book, $status = null)
+    {
+        try{
+            $con = new PDO( DB_DSN, DB_USERNAME, DB_PASSWORD );
+            $con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
+            $stmt = $con->prepare("UPDATE ".DB_BOOK_ISSUED_TBL. " SET status=? WHERE books=?");
+            return $stmt->execute([
+                $status,
+                $book
+            ]);
+
+            $con = null;
+
+        }catch (PDOException $e) {
+            return $e->getMessage();
+        }
+
     }
 
 

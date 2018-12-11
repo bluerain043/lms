@@ -166,7 +166,7 @@ $types = Types::getAllTypes();
                                         <i class="notika-icon notika-dollar"> Price</i>
                                     </div>
                                     <div class="nk-int-st">
-                                        <input type="text" class="form-control price" name ="price" placeholder="Price" data-mask="P 9,999.99" >
+                                        <input type="text" class="form-control price" name ="price" placeholder="Price" data-mask="9999.99" >
                                     </div>
                                 </div>
                             </div>
@@ -207,7 +207,6 @@ include_once("{$currDir}/layout/footer.php"); ?>
                  if(response == 'success') alert("Books added successfully");
                 else alert(response);
                 $form[0].reset();
-                console.log(response);
             };
             common.request
                 .fnAjax('./services/ajaxGetBookDetails.php', 'POST', 'json', $form.serializeArray())

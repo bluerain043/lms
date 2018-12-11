@@ -7,6 +7,11 @@
     include_once("./class/Magazines.php");
     include_once("./lib/functions.php");
 
+    session_start();
+    if (!isset($_SESSION['userid']) && !isset($_SESSION['username'])){
+        redirect('./');
+    }
+
     $books = Books::getAllAvailableBooks();
     $members = Members::getActiveMembers();
     $newspapers = Newspapers::getAllNewspapers();
@@ -105,27 +110,7 @@
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                     <div class="header-top-menu">
                         <ul class="nav navbar-nav notika-top-nav">
-                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-menus"></i></span></a>
-                                <div role="menu" class="dropdown-menu message-dd task-dd animated zoomIn">
-                                    <div class="hd-message-info hd-task-info">
-                                        <div class="skill">
-                                            <div class="progress">
-                                                <div class="lead-content">
-                                                    <p>User</p>
-                                                </div>
-                                                <div class="progress-bar wow fadeInLeft" data-progress="95%" style="width: 95%;" data-wow-duration="1.5s" data-wow-delay="1.2s"> <span>95%</span>
-                                                </div>
-                                            </div>
-                                            <div class="progress">
-                                                <div class="lead-content">
-                                                    <p>Logout</p>
-                                                </div>
-                                                <div class="progress-bar wow fadeInLeft" data-progress="85%" style="width: 85%;" data-wow-duration="1.5s" data-wow-delay="1.2s"><span>85%</span> </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                 
-                                </div>
+                            <li class="nav-item"><a href="logout.php" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><span><i class="notika-icon notika-right-arrow"></i></span></a>
                             </li>
                         </ul>
                     </div>
@@ -145,14 +130,12 @@
                                 <li><a data-toggle="collapse" data-target="#Charts" href="#">Home</a>
                                     <ul class="collapse dropdown-header-top">
                                         <li><a href="main.php">Dashboard</a></li>
-                                        <li><a href="index.html">Issued</a></li>
-                                        <li><a href="returned.php">Returned</a></li>
-                                        <li><a href="index-3.html">Overdue</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#demoevent" href="#">Entry</a>
                                     <ul id="demoevent" class="collapse dropdown-header-top">
                                         <li><a href="loan.html">Loan</a></li>
+                                        <li><a href="returned.php">Returned</a></li>
                                         <li><a href="books.php">Book</a></li>
                                         <li><a href="view-email.html">Magazine</a></li>
                                         <li><a href="compose-email.html">Newspapers</a></li>
@@ -191,18 +174,13 @@
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="main.php">Dashboard</a>
                                 </li>
-                                <li><a href="index-2.html">Issued</a>
-                                </li>
-                                <li><a href="returned.php">Returned</a>
-                                </li>
-                                <li><a href="index-3.html">Overdue</a>
-                                </li>
                             </ul>
                         </div>
                         <div id="mailbox" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
                                 <li><a href="loan.php">Loan</a>
                                 </li>
+                                <li><a href="returned.php">Returned</a>
                                 <li><a href="books.php">Books</a>
                                 </li>
                                 <li><a href="magazine.html">Magazines</a>
@@ -233,7 +211,7 @@
                     <div class="wb-traffic-inner notika-shadow sm-res-mg-t-30 tb-res-mg-t-30">
                         <div class="website-traffic-ctn">
                             <h2><span class="counter"><?php echo count($books); ?></span></h2>
-                            <p>Books</p>
+                            <p>Available Books</p>
                         </div>
                         <div class="sparkline-bar-stats1">9,4,8,6,5,6,4,8,3,5,9,5</div>
                     </div>

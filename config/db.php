@@ -15,6 +15,7 @@
     define( "DB_MAGAZINE_TBL", "magazines" );
     define( "DB_BOOK_ISSUED_TBL", "book_issued" );
     define( "DB_COMMUNITY_TBL", "community" );
+    define( "DB_RETURN_BOOK_TBL", "return_book" );
 
 	//define( "DB_TABLE", "demo_myWoyster_login" );
 	define( "CLS_PATH", "class" );
