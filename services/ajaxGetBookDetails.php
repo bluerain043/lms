@@ -4,6 +4,7 @@ include_once("../config/db.php");
 include_once("../class/Books.php");
 include_once("../class/BookIssued.php");
 include_once("../class/ReturnedBooks.php");
+include_once("../class/Magazines.php");
 include_once("../lib/functions.php");
 
 
@@ -50,5 +51,18 @@ if(isset($_POST['action']) && $_POST['action'] == 'returnedBooks'){
     }else{
         echo 'Problem while returning book';
     }
+
+}
+
+if(isset($_POST['action']) && $_POST['action'] == 'addMagazine'){
+    $magazine = new Magazines($_POST);
+    $bSave = $magazine->save();
+    if($bSave){
+        redirect('../magazine.php');
+    }else{
+        print_r('<script>alert("Unable to save magazine as of the moment")</script>');
+        exit;
+    }
+
 
 }

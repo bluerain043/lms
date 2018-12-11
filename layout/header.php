@@ -5,6 +5,7 @@
     include_once("./class/Members.php");
     include_once("./class/Newspapers.php");
     include_once("./class/Magazines.php");
+    include_once("./class/Community.php");
     include_once("./lib/functions.php");
 
     session_start();
@@ -137,13 +138,13 @@
                                         <li><a href="loan.html">Loan</a></li>
                                         <li><a href="returned.php">Returned</a></li>
                                         <li><a href="books.php">Book</a></li>
-                                        <li><a href="view-email.html">Magazine</a></li>
-                                        <li><a href="compose-email.html">Newspapers</a></li>
+                                        <li><a href="magazine.php">Magazine</a></li>
+                                        <li><a href="newspaper.php">Newspapers</a></li>
                                     </ul>
                                 </li>
                                 <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Members</a>
                                     <ul id="Pagemob" class="collapse dropdown-header-top">
-                                        <li><a href="contact.html">Contact</a>
+                                        <li><a href="community.php">Community</a>
                                         </li>
 
                                     </ul>
@@ -183,16 +184,16 @@
                                 <li><a href="returned.php">Returned</a>
                                 <li><a href="books.php">Books</a>
                                 </li>
-                                <li><a href="magazine.html">Magazines</a>
+                                <li><a href="magazine.php">Magazines</a>
                                 </li>
-                                <li><a href="newspaper.html">Newspapers</a>
+                                <li><a href="newspaper.php">Newspapers</a>
                                 </li>
                             </ul>
                         </div>
                         
                         <div id="Page" class="tab-pane notika-tab-menu-bg animated flipInX">
                             <ul class="notika-main-menu-dropdown">
-                                <li><a href="community.html">Community</a>
+                                <li><a href="community.php">Community</a>
                                 </li>
                             </ul>
                         </div>
