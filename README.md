@@ -12,5 +12,8 @@
 
   - xampp or wampp
   
+##### NOTE: use the following credentials to login to the lms web  
+    - username = admin
+    - password = admin
   
 ### Instructions applicable in local development only

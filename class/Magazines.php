@@ -2,7 +2,6 @@
 class Magazines {
 
    private $magazines;
-   private $type;
    private $name;
    private $date_of_receipt;
    private $date_published;
@@ -13,7 +12,6 @@ class Magazines {
 
    public function __construct($arData = []) {
        if(isset($arData['magazine']) ) $this->magazines = stripslashes( strip_tags( $arData['magazine'] ) );
-       if(isset($arData['type']) ) $this->type = stripslashes( strip_tags( $arData['type'] ) );
        if(isset($arData['name']) ) $this->name = stripslashes( strip_tags( $arData['name'] ) );
        if(isset($arData['date_of_receipt']) ) $this->date_of_receipt = date('Y-m-d', strtotime($arData['date_of_receipt']));
        if(isset($arData['date_published']) ) $this->date_published = date('Y-m-d', strtotime($arData['date_published']));
